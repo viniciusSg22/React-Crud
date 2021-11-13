@@ -3,7 +3,7 @@ const router = express.Router();
 const { Posts } = require('../models')
 
 router.get("/", async (req, res) => {
-    const listOfPosts = await Posts.findAll();
+    const listOfPosts = await Posts.findAll(); //Método findAll() traz uma lista de todos os dados que estão presentes no seu banco de dados, é basicamente um "SELECT * FROM <tabela>"
     res.json(listOfPosts);
     //res.send("Hello world");
 });
