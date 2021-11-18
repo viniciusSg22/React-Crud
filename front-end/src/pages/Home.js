@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../components/Card/Card";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
-
+  let navigate = useNavigate();
   useEffect(() => {
     axios.get("http://localhost:3001/posts").then((response) => {
       setListOfPosts(response.data);
@@ -13,9 +14,14 @@ function Home() {
 
   return (
     <div className="App">
-      {listOfPosts.map((value, key) => {
+      {listOfPosts.map((value, keyName) => {
         return (
-          <div>
+          <div
+            onClick={() => {
+              navigate(`/readpost/${value.id}`);
+            }}
+            key={keyName}
+          >
             <Card
               title={value.title}
               text={value.postText}
