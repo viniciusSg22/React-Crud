@@ -2,21 +2,27 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from "../components/Card";
+import Comments from "../components/Comments";
 
 function ReadPost() {
   let { id } = useParams();
 
-  const [postObject, setPostObject] = useState({})
+  const [postObject, setPostObject] = useState({});
 
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/readById/${id}`).then((response) => {
-      setPostObject(response.data)
+      setPostObject(response.data);
     });
   }, [id]);
 
   return (
     <div>
-      <Card title={postObject.title} text={postObject.postText} footer={postObject.username}/>
+      <Card
+        title={postObject.title}
+        text={postObject.postText}
+        footer={postObject.username}
+      />
+      <Comments />
     </div>
   );
 }
