@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Card from "../components/Card/Card";
+import Card from "../components/Card";
 import { useNavigate } from "react-router-dom";
 
 function Home() {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Card from "../components/Card/Card";
+import Card from "../components/Card";
 
 function ReadPost() {
   let { id } = useParams();
@@ -12,7 +12,7 @@ function ReadPost() {
     axios.get(`http://localhost:3001/posts/readById/${id}`).then((response) => {
       setPostObject(response.data)
     });
-  });
+  }, [id]);
 
   return (
     <div>
