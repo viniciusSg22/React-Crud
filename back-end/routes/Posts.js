@@ -4,6 +4,9 @@ const { Posts } = require("../models");
 
 router.get("/", async (req, res) => {
   const listOfPosts = await Posts.findAll(); //Método findAll() traz uma lista de todos os dados que estão presentes no seu banco de dados, é basicamente um "SELECT * FROM <tabela>"
+  //Quando o findAll roda ele é como se chamasse a linha 1 do mysql
+  //Então ele retorna as colunas da tabela Posts
+  //Só que ele ta tentando retornar o valor userId que não existe na tabela Posts
   res.json(listOfPosts);
   //res.send("Hello world");
 });
