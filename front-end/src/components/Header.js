@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import 'bootstrap-icons/font/bootstrap-icons.css';
-
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Header() {
   return (
@@ -23,7 +22,7 @@ function Header() {
           <div class="collapse navbar-collapse" id="navbarButtonsExample">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to="/" className="nav-link active">
                   React-Crud
                 </Link>
               </li>
@@ -40,12 +39,16 @@ function Header() {
             </ul>
 
             <div class="d-flex align-items-center">
-              <button type="button" class="btn btn-outline-primary me-2">
-                Login
-              </button>
-              <button type="button" class="btn btn-primary me-3">
-                Cadastre-se
-              </button>
+              <Link to="/login">
+                <button type="button" class="btn btn-outline-primary me-2">
+                  Login
+                </button>
+              </Link>
+              <Link to="/register">
+                <button type="button" class="btn btn-primary me-3">
+                  Cadastre-se
+                </button>
+              </Link>
             </div>
           </div>
         </div>
