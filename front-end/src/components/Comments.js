@@ -16,14 +16,25 @@ function Comments() {
 
   const addComment = () => {
     axios
-      .post("http://localhost:3001/comments", {
-        commentBody: newComment,
-        PostId: id,
-      })
+      .post(
+        "http://localhost:3001/comments",
+        {
+          commentBody: newComment,
+          PostId: id,
+        },
+        { headers: { accessToken: localStorage.getItem("accessToken") } }
+      )
       .then((response) => {
-        const commentToAdd = { commentBody: newComment };
-        setComments([...comments, commentToAdd]);
-        setNewComment("");
+        if (response.data.error) {
+          console.log(response.data.error);
+        } else {
+          const commentToAdd = {
+            commentBody: newComment,
+            username: response.data.username,
+          };
+          setComments([...comments, commentToAdd]);
+          setNewComment("");
+        }
       });
   };
 
@@ -39,8 +50,21 @@ function Comments() {
         <button onClick={addComment}>Comentar</button>
       </div>
       <div>
+        <h1>Comentários:</h1>
         {comments.map((comment, key) => {
-          return <div key={key}>{comment.commentBody}</div>;
+          return (
+            <div className="card col-sm-5">
+              <div key={key} className="card-body">
+                <blockquote className="blockquote mb-0">
+                  <p>{comment.commentBody}</p>
+                  <label className="blockquote-footer">{comment.username}</label>
+                </blockquote>
+              </div>
+              <div>
+                
+              </div>
+            </div>
+          );
         })}
       </div>
     </div>

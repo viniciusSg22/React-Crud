@@ -10,13 +10,21 @@ function Register() {
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().min(3).max(15).required(),
-    password: Yup.string().min(3).max(20).required(),
+    username: Yup.string()
+      .min(3, "Nome de usuário muito curto!")
+      .max(15, "Nome de usuário muito longo!")
+      .required("O nome de usuário é obrigatório!"),
+    password: Yup.string()
+      .min(3, "Senha muito curta!")
+      .max(20, "Senha muito longa!")
+      .required("A senha é obrigatória!"),
   });
 
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("http:localhost:3001/auth", data).then((response) => {});
+    axios.post("http://localhost:3001/auth", data).then(() => {
+      console.log(data);
+    });
   };
   return (
     <div>
@@ -26,13 +34,33 @@ function Register() {
         onSubmit={onSubmit}
       >
         <Form>
-          <label>Usuário</label>
-          <ErrorMessage name="username" component="span"/>
-          <Field name="username" autoComplete="off"/>
-          <label>Senha</label>
-          {/* <ErrorMessage component="span" /> */}
-          <Field name="password" autoComplete="off" type="password"/>
-          <button type="submit">Cadastrar</button>
+          <h1 className="h3 mb-3 mt-3 fw-normal">Cadastre-se</h1>
+          <div className="col-sm-5 mx-auto mb-3">
+            <label>Usuário:</label>
+            <ErrorMessage name="username" component="span" className="px-1" />
+            <Field
+              type="text"
+              name="username"
+              autoComplete="off"
+              className="form-control"
+            />
+          </div>
+          <div className="col-sm-5 mx-auto mb-3">
+            <label>Senha:</label>
+            <ErrorMessage component="span" name="password" className="px-1" />
+            <Field
+              name="password"
+              autoComplete="off"
+              type="password"
+              className="form-control"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-25 btn btn-lg btn-primary col-sm-3"
+          >
+            Cadastrar
+          </button>
         </Form>
       </Formik>
     </div>

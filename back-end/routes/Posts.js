@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Posts } = require("../models");
+const {validateToken} = require("../middlewares/AuthMiddleware")
 
 router.get("/", async (req, res) => {
   const listOfPosts = await Posts.findAll(); //Método findAll() traz uma lista de todos os dados que estão presentes no seu banco de dados, é basicamente um "SELECT * FROM <tabela>"
@@ -17,7 +18,7 @@ router.get("/readById/:id", async (req, res) => {
   res.json(post);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", validateToken, async (req, res) => {
   const post = req.body;
   await Posts.create(post); //Esse linha está mandando os dados de Post que é tudo que está no body da requisição para o banco, a partir do sequelize
   res.json(post);
