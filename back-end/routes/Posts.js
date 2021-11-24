@@ -18,7 +18,7 @@ router.get("/readById/:id", async (req, res) => {
   res.json(post);
 });
 
-router.post("/", validateToken, async (req, res) => {
+router.post("/", async (req, res) => {
   const post = req.body;
   await Posts.create(post); //Esse linha está mandando os dados de Post que é tudo que está no body da requisição para o banco, a partir do sequelize
   res.json(post);

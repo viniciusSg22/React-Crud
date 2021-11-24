@@ -26,7 +26,7 @@ function Comments() {
       )
       .then((response) => {
         if (response.data.error) {
-          console.log(response.data.error);
+          return window.alert("Você não está logado");
         } else {
           const commentToAdd = {
             commentBody: newComment,
@@ -57,12 +57,12 @@ function Comments() {
               <div key={key} className="card-body">
                 <blockquote className="blockquote mb-0">
                   <p>{comment.commentBody}</p>
-                  <label className="blockquote-footer">{comment.username}</label>
+                  <label className="blockquote-footer">
+                    {comment.username}
+                  </label>
                 </blockquote>
               </div>
-              <div>
-                
-              </div>
+              <div></div>
             </div>
           );
         })}
