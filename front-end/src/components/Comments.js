@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Comments() {
   let { id } = useParams();
+  const navigate = useNavigate();
 
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
@@ -26,6 +27,7 @@ function Comments() {
       )
       .then((response) => {
         if (response.data.error) {
+          navigate("/login");
           return window.alert("Você não está logado");
         } else {
           const commentToAdd = {

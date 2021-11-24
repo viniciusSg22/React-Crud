@@ -2,6 +2,7 @@ import React from "react";
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const initialValues = {
@@ -20,10 +21,15 @@ function Register() {
       .required("A senha é obrigatória!"),
   });
 
+  const navigate = useNavigate();
   const onSubmit = (data) => {
-    console.log(data);
-    axios.post("http://localhost:3001/auth", data).then(() => {
-      console.log(data);
+    axios.post("http://localhost:3001/auth", data).then((response) => {
+      if (response.data.error) {
+        alert(response.data.error);
+      } else {
+        navigate("/");
+        alert("Usuário criado com sucesso!");
+      }
     });
   };
   return (

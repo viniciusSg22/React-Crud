@@ -7,13 +7,22 @@ const { sign } = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
   const { username, password } = req.body;
-  bcrypt.hash(password, 10).then((hash) => {
-    Users.create({
-      //Users = nome da tabela Create = método sequelize
-      username: username, //1°username = nome da coluna, 2° username = const criada na linha 7
-      password: hash, //password = nome da coluna, hash = senha que o usuário colocou no form, porém, vários caracteres aleatórios serão inseridos no banco
-    });
-    res.json("Dados inseridos com sucesso");
+
+  const user = await Users.findOne({ where: { username: username } });
+
+  bcrypt.compare(username, user.username).then((match) => {
+    if (!match) {
+      res.json({ error: "Nome de usuário inserido já existe" });
+    } else {
+      bcrypt.hash(password, 10).then((hash) => {
+        Users.create({
+          //Users = nome da tabela Create = método sequelize
+          username: username, //1°username = nome da coluna, 2° username = const criada na linha 7
+          password: hash, //password = nome da coluna, hash = senha que o usuário colocou no form, porém, vários caracteres aleatórios serão inseridos no banco
+        });
+        res.json("Dados inseridos com sucesso");
+      });
+    }
   });
 });
 

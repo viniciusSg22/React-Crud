@@ -24,9 +24,18 @@ function CreatePost() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/posts", data).then((response) => {
-      navigate("/");
-    });
+    axios
+      .post("http://localhost:3001/posts", data, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        if (response.data.error) {
+          alert("Você não está logado!")
+          navigate("/login")
+        } else {
+          navigate("/");
+        }
+      });
   };
   return (
     <div>
@@ -39,7 +48,7 @@ function CreatePost() {
           <h1 className="h3 mb-3 mt-3 fw-normal">Criar Post</h1>
           <div className="col-sm-5 mx-auto mb-3">
             <label>Título: </label>
-            <ErrorMessage name="title" component="span" className="px-1"/>
+            <ErrorMessage name="title" component="span" className="px-1" />
             <Field
               name="title"
               placeholder="Título do Post"
@@ -48,7 +57,7 @@ function CreatePost() {
           </div>
           <div className="col-sm-5 mx-auto mb-3">
             <label>Post: </label>
-            <ErrorMessage name="postText" component="span" className="px-1"/>
+            <ErrorMessage name="postText" component="span" className="px-1" />
             <Field
               name="postText"
               placeholder="Conteúdo do Post"
@@ -57,7 +66,7 @@ function CreatePost() {
           </div>
           <div className="col-sm-5 mx-auto mb-3">
             <label>Usuário: </label>
-            <ErrorMessage name="username" component="span" className="px-1"/>
+            <ErrorMessage name="username" component="span" className="px-1" />
             <Field
               name="username"
               placeholder="Nome de usuário"
