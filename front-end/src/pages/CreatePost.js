@@ -7,31 +7,28 @@ import { useNavigate } from "react-router-dom";
 function CreatePost() {
   let navigate = useNavigate();
 
+  const obj = JSON.parse(sessionStorage.getItem("user"));
+
   const initialValues = {
     title: "",
     postText: "",
-    username: "",
   };
 
   const validationSchema = yup.object().shape({
     title: yup.string().required("O título é obrigatório!"),
     postText: yup.string().required("O conteúdo do post é obrigatório!"),
-    username: yup
-      .string()
-      .min(3, "Nome de usuário muito curto")
-      .max(16, "Nome de usuário muito longo")
-      .required("Nome de usuário é obrigarótio"),
   });
 
   const onSubmit = (data) => {
+    data.username = obj?.username
     axios
       .post("http://localhost:3001/posts", data, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {
         if (response.data.error) {
-          alert("Você não está logado!")
-          navigate("/login")
+          alert("Você não está logado!");
+          navigate("/login");
         } else {
           navigate("/");
         }
@@ -61,15 +58,6 @@ function CreatePost() {
             <Field
               name="postText"
               placeholder="Conteúdo do Post"
-              className="form-control"
-            />
-          </div>
-          <div className="col-sm-5 mx-auto mb-3">
-            <label>Usuário: </label>
-            <ErrorMessage name="username" component="span" className="px-1" />
-            <Field
-              name="username"
-              placeholder="Nome de usuário"
               className="form-control"
             />
           </div>
