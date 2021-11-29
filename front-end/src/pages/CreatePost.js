@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function CreatePost() {
   let navigate = useNavigate();
 
-  const obj = JSON.parse(sessionStorage.getItem("user"));
+  const obj = JSON.parse(localStorage.getItem("user"));
 
   const initialValues = {
     title: "",

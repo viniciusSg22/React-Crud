@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { AuthContext } from "../helpers/AuthContext";
 import axios from "axios";
@@ -11,11 +11,13 @@ function Header() {
     status: false,
   });
 
+  const navigate = useNavigate();
+
   function removeToken() {
     if (window.confirm("Você tem certeza que deseja sair?")) {
-      localStorage.removeItem("accessToken");
-      sessionStorage.clear();
+      localStorage.clear();
       setAuthState({ username: "", id: 0, status: false });
+      navigate("/")
     } else {
       alert("Você ainda está logado!");
     }

@@ -22,7 +22,7 @@ function Login() {
           id: response.data.id,
           status: true,
         };
-        sessionStorage.setItem("user", JSON.stringify(session));
+        localStorage.setItem("user", JSON.stringify(session));
         window.location.reload(true);
       }
     });
