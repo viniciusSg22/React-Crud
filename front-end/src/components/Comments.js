@@ -6,6 +6,8 @@ function Comments() {
   let { id } = useParams();
   const navigate = useNavigate();
 
+  const obj = JSON.parse(localStorage.getItem("user"));
+
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
 
@@ -16,40 +18,66 @@ function Comments() {
   }, [id]);
 
   const addComment = () => {
-    axios
-      .post(
-        "http://localhost:3001/comments",
-        {
-          commentBody: newComment,
-          PostId: id,
-        },
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-      )
-      .then((response) => {
-        if (response.data.error) {
-          navigate("/login");
-          return window.alert("Você não está logado");
-        } else {
-          const commentToAdd = {
+    if (newComment === "") {
+      alert("Comentário não pode ser nulo!");
+    } else {
+      axios
+        .post(
+          "http://localhost:3001/comments",
+          {
             commentBody: newComment,
-            username: response.data.username,
-          };
-          setComments([...comments, commentToAdd]);
-          setNewComment("");
-        }
-      });
+            PostId: id,
+          },
+          { headers: { accessToken: localStorage.getItem("accessToken") } }
+        )
+        .then((response) => {
+          if (response.data.error) {
+            navigate("/login");
+            return window.alert("Você não está logado");
+          } else {
+            const commentToAdd = {
+              commentBody: newComment,
+              username: response.data.username,
+            };
+            setComments([...comments, commentToAdd]);
+            setNewComment("");
+          }
+        });
+    }
+  };
+
+  const deleteComment = (id, e) => {
+    if (window.confirm("Tem certeza que deseja deletar esse comentário?")) {
+      window.location.reload(true);
+      axios
+        .delete(`http://localhost:3001/comments/${id}`, {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        })
+        .then(() => {
+          setComments(
+            comments.filter((val) => {
+              return val.id !== id;
+            })
+          );
+        });
+    } else {
+      alert("O comentário não foi deletado");
+    }
   };
 
   return (
     <div>
-      <div>
+      <div className="col-sm-5 mx-auto mb-3">
         <input
           onChange={(e) => {
             setNewComment(e.target.value);
           }}
           value={newComment}
+          className="form-control"
         />
-        <button onClick={addComment}>Comentar</button>
+        <button onClick={addComment} className="btn btn-primary">
+          Comentar
+        </button>
       </div>
       <div>
         <h1>Comentários:</h1>
@@ -62,6 +90,16 @@ function Comments() {
                   <label className="blockquote-footer">
                     {comment.username}
                   </label>
+                  {comment.username === obj?.username && (
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        deleteComment(comment.id);
+                      }}
+                    >
+                      X
+                    </button>
+                  )}
                 </blockquote>
               </div>
               <div></div>
