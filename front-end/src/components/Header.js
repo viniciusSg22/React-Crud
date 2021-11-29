@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { AuthContext } from "../helpers/AuthContext";
 import axios from "axios";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 function Header() {
   const [authState, setAuthState] = useState({
@@ -17,7 +18,7 @@ function Header() {
     if (window.confirm("Você tem certeza que deseja sair?")) {
       localStorage.clear();
       setAuthState({ username: "", id: 0, status: false });
-      navigate("/")
+      navigate("/");
     } else {
       alert("Você ainda está logado!");
     }
@@ -44,42 +45,32 @@ function Header() {
   return (
     <div>
       <AuthContext.Provider value={{ authState, setAuthState }}>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container">
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-mdb-toggle="collapse"
-              data-mdb-target="#navbarButtonsExample"
-              aria-controls="navbarButtonsExample"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i className="bi bi-list"></i>
-            </button>
-
-            <div className="collapse navbar-collapse" id="navbarButtonsExample">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link to="/" className="nav-link active">
-                    React-Crud
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">
-                    Página Inicial
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/createpost" className="nav-link">
-                    Criar um Post
-                  </Link>
-                </li>
-              </ul>
-
-              <div className="d-flex align-items-center">
-                {!authState.status && (
-                  <div>
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+          <Nav>
+            <Nav.Link>
+              <Link to="/" className="nav-link">
+                React-Crud
+              </Link>
+            </Nav.Link>
+          </Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav>
+              <Nav.Link>
+                <Link to="/" className="nav-link">
+                  Página Inicial
+                </Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/createpost" className="nav-link">
+                  Criar Post
+                </Link>
+              </Nav.Link>
+            </Nav>
+            <Nav>
+              {!authState.status && (
+                <>
+                  <Nav.Link>
                     <Link to="/login">
                       <button
                         type="button"
@@ -88,14 +79,18 @@ function Header() {
                         Login
                       </button>
                     </Link>
+                  </Nav.Link>
+                  <Nav.Link>
                     <Link to="/register">
                       <button type="button" className="btn btn-primary me-3">
                         Cadastre-se
                       </button>
                     </Link>
-                  </div>
-                )}
-                {authState.status && (
+                  </Nav.Link>
+                </>
+              )}
+              {authState.status && (
+                <>
                   <button
                     type="button"
                     className="btn btn-outline-primary me-2"
@@ -103,12 +98,12 @@ function Header() {
                   >
                     Logout
                   </button>
-                )}
-                <h1>{authState.username}</h1>
-              </div>
-            </div>
-          </div>
-        </nav>
+                  <h1>{authState.username}</h1>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       </AuthContext.Provider>
     </div>
   );

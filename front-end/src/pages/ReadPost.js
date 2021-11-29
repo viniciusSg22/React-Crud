@@ -84,15 +84,21 @@ function ReadPost() {
       {obj?.username === postObject.username && (
         <div>
           <button
+            onClick={() => editPost("title")}
+            className="btn btn-primary mb-3 mt-1"
+          >
+            Editar Título
+          </button>
+          <button
             onClick={() => deletePost(postObject.id)}
-            className="btn btn-danger"
+            className="btn btn-danger mx-3 mb-3 mt-1"
           >
             Delete Post
           </button>
-          <button onClick={() => editPost("title")} className="btn btn-primary">
-            Editar Título
-          </button>
-          <button onClick={() => editPost("body")} className="btn btn-primary">
+          <button
+            onClick={() => editPost("body")}
+            className="btn btn-primary mb-3 mt-1"
+          >
             Editar Texto
           </button>
         </div>

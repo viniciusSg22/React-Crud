@@ -41,6 +41,7 @@ function Comments() {
             };
             setComments([...comments, commentToAdd]);
             setNewComment("");
+            window.location.reload(true);
           }
         });
     }
@@ -48,7 +49,6 @@ function Comments() {
 
   const deleteComment = (id, e) => {
     if (window.confirm("Tem certeza que deseja deletar esse comentário?")) {
-      window.location.reload(true);
       axios
         .delete(`http://localhost:3001/comments/${id}`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
@@ -74,8 +74,9 @@ function Comments() {
           }}
           value={newComment}
           className="form-control"
+          placeholder="Envie um comentário!"
         />
-        <button onClick={addComment} className="btn btn-primary">
+        <button onClick={addComment} className="btn btn-primary mt-2">
           Comentar
         </button>
       </div>
