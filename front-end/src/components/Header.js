@@ -4,6 +4,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { AuthContext } from "../helpers/AuthContext";
 import axios from "axios";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 
 function Header() {
   const [authState, setAuthState] = useState({
@@ -26,7 +28,7 @@ function Header() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/auth/auth", {
+      .get(`${config.apiUrl}/auth/auth`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {

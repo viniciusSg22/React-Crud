@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 
 function Comments() {
   let { id } = useParams();
@@ -12,7 +14,7 @@ function Comments() {
   const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+    axios.get(`${config.apiUrl}/comments/${id}`).then((response) => {
       setComments(response.data);
     });
   }, [id]);
@@ -23,7 +25,7 @@ function Comments() {
     } else {
       axios
         .post(
-          "http://localhost:3001/comments",
+          `${config.apiUrl}/comments`,
           {
             commentBody: newComment,
             PostId: id,
@@ -50,7 +52,7 @@ function Comments() {
   const deleteComment = (id, e) => {
     if (window.confirm("Tem certeza que deseja deletar esse comentário?")) {
       axios
-        .delete(`http://localhost:3001/comments/${id}`, {
+        .delete(`${config.apiUrl}/comments/${id}`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then(() => {

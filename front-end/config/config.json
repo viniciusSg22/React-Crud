@@ -1,0 +1,12 @@
+{
+    "development": {
+      "apiUrl": "http://localhost:3001"
+    },
+    "test": {
+        "apiUrl": "http://localhost:3001"
+    },
+    "production": {
+        "apiUrl": "https://api-crud-node-js.herokuapp.com"
+    }
+  }
+  

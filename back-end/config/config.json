@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "api-crud-node-js",
+    "password": "vB20unjLI7I229Dx",
+    "database": "react_crud",
+    "host": "35.237.189.148",
     "dialect": "mysql"
   }
 }
