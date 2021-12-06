@@ -22,16 +22,16 @@ Projeto feito em ReactJs que utiliza o Node para Back-end e MySQL para o banco d
 
 O projeto em questão faz uso de:
 
-[![Axios][axios]
-[![Bootstrap][bootstrap]
-[![Formik][formik]
-[![Bcrypt][bcrypt]
-[![Cors][cors]
-[![Express][express]
-[![JWT][jwt]
-[![MySQL2][mysql2]
-[![Nodemon][nodemon]
-[![Sequelize][sequelize]
+[![Axios][axios]]
+[![Bootstrap][bootstrap]]
+[![Formik][formik]]
+[![Bcrypt][bcrypt]]
+[![Cors][cors]]
+[![Express][express]]
+[![JWT][jwt]]
+[![MySQL2][mysql2]]
+[![Nodemon][nodemon]]
+[![Sequelize][sequelize]]
 
 ## Usage example
 
