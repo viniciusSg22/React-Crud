@@ -3,29 +3,35 @@
 [![Frontend][Frontend-image]][Frontend-url]
 [![Backend][Backend-image]][Backend-url]
 
-> Short blurb about your project idea.
+> Blog para posts de assuntos variados
 
-One or two paragraphs about your project and what it does.
+Projeto feito em ReactJs que utiliza o Node para Back-end e MySQL para o banco de dados e tem foco em ser um blog onde os usuários só conseguem realizar qualquer ação assim que estiverem logados.
 
 ---
-## Author
+## Autores
 
 **Your name** 
-* *Initial work* - [repository-name][repository-url] (Repository space)
-* *Released on* [cloud-provider][cloud-provider-url] (Cloud provider)
-* *My professional profile on* [LinkedIn][linkedin-url]
+* *Camili Martins* [GitHub][]
+* *Emelly Costa* [GitHub][]
+* *Patricia Soares* [GitHub][]
+* *Thiago Amorim* [GitHub][]
+* *Victor Gomes* [GitHub][]
+* *Vinícius Sanches* [GitHub][]
 
-## Showcase
+## Tecnologias
 
-This project was designed to demonstrate:
+O projeto em questão faz uso de:
 
-* Technology 1
-  * Tech 1 subitem
-* Technology 2
-* .
-* .
-* .
-* Technology N
+[![Axios][axios]
+[![Bootstrap][bootstrap]
+[![Formik][formik]
+[![Bcrypt][bcrypt]
+[![Cors][cors]
+[![Express][express]
+[![JWT][jwt]
+[![MySQL2][mysql2]
+[![Nodemon][nodemon]
+[![Sequelize][sequelize]
 
 ## Usage example
 
@@ -116,3 +122,13 @@ Remember this is a showcase, thus your potential employer might want to see an a
 [Frontend-url]: https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge
 [Backend-image]: https://img.shields.io/badge/Backend-Node-important?style=for-the-badge
 [Backend-url]: https://img.shields.io/badge/Backend-Node-important?style=for-the-badge
+[axios]: https://img.shields.io/badge/Frontend-Axios-important?style=for-the-badge
+[bootstrap]: https://img.shields.io/badge/Frontend-Bootstrap-important?style=for-the-badge
+[formik]: https://img.shields.io/badge/Frontend-Formik-important?style=for-the-badge
+[bcrypt]: https://img.shields.io/badge/Backend-Bcrypt-important?style=for-the-badge
+[cors]: https://img.shields.io/badge/Backend-Cors-important?style=for-the-badge
+[express]: https://img.shields.io/badge/Backend-Express-important?style=for-the-badge
+[jwt]: https://img.shields.io/badge/Backend-JWT-important?style=for-the-badge
+[mysql2]: https://img.shields.io/badge/Backend-MySQL2-important?style=for-the-badge
+[nodemon]: https://img.shields.io/badge/Backend-Nodemon-important?style=for-the-badge
+[sequelize]: https://img.shields.io/badge/Backend-Sequelize-important?style=for-the-badge
