@@ -75,7 +75,7 @@ npm run start
 ---
 ## Feito com
 
-[![Npm][npm]][npm-url] - Gerenciador de Pacotes
+[![Gerenciador de Pacotes][npm]][npm-url] - Gerenciador de Pacotes
 [![Heroku][heroku]][heroku-url] - Deploy do cliente e do servidor
 
 ---
