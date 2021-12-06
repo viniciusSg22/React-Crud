@@ -61,7 +61,16 @@ npm run start
 ---
 ## Utilização
 
-Imagens
+<p>Página inicial: </p>
+<img src="./assets/inicial.PNG"/>
+<p>Dentro do aplicativo, só será possível executar qualquer ação estando logado, para isso se cadastre: </p>
+<img src="./assets/cadastro.PNG"/>
+<p>Ou se já tiver um cadastro, faça o login: </p>
+<img src="./assets/login.PNG"/>
+<p>Logo em seguida já será possível criar posts e comentários</p>
+<img src="./assets/criar.PNG"/>
+<p>Além de criar, você pode também, editar e excluir caso seja o proprietário</p>
+<img src="./assets/features.PNG"/>
 
 ---
 ## Feito com
