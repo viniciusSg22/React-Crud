@@ -1,6 +1,6 @@
 # Project Name
 [![Project Version][version-image]][version-url]
-[![Frontend][Frontend-image]][[Frontend-url]]
+[![Frontend][Frontend-image]][Frontend-url]
 [![Backend][Backend-image]][Backend-url]
 
 > Short blurb about your project idea.
@@ -112,7 +112,7 @@ Remember this is a showcase, thus your potential employer might want to see an a
 
 [version-image]: https://img.shields.io/badge/Version-1.0.0-brightgreen?style=for-the-badge&logo=appveyor
 [version-url]: https://img.shields.io/badge/version-1.0.0-green
-[Frontend-image]: https://img.shields.io/badge/Frontend-Ionic-blue?style=for-the-badge
+[Frontend-image]: https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge
 [Frontend-url]: https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge
-[Backend-image]: https://img.shields.io/badge/Backend-Java%208-important?style=for-the-badge
+[Backend-image]: https://img.shields.io/badge/Backend-Node-important?style=for-the-badge
 [Backend-url]: https://img.shields.io/badge/Backend-Node-important?style=for-the-badge
