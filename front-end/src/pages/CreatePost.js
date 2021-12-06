@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 
 function CreatePost() {
   let navigate = useNavigate();
@@ -22,7 +24,7 @@ function CreatePost() {
   const onSubmit = (data) => {
     data.username = obj?.username
     axios
-      .post("http://localhost:3001/posts", data, {
+      .post(`https://api-crud-node-js.herokuapp.com/posts`, data, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 import Comments from "../components/Comments";
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 
 function ReadPost() {
   let { id } = useParams();
@@ -13,7 +15,7 @@ function ReadPost() {
   const obj = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/readById/${id}`).then((response) => {
+    axios.get(`https://api-crud-node-js.herokuapp.com/posts/readById/${id}`).then((response) => {
       setPostObject(response.data);
     });
   }, [id]);
@@ -21,7 +23,7 @@ function ReadPost() {
   const deletePost = (id) => {
     if (window.confirm("Você quer realmente deletar esse post???")) {
       axios
-        .delete(`http://localhost:3001/posts/${id}`, {
+        .delete(`https://api-crud-node-js.herokuapp.com/posts/${id}`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then((response) => {
@@ -44,7 +46,7 @@ function ReadPost() {
         alert("Novo título não pode ser nulo!");
       } else if (newTitle) {
         axios.put(
-          "http://localhost:3001/posts/title",
+          `https://api-crud-node-js.herokuapp.com/posts/title`,
           {
             newTitle: newTitle,
             id: id,
@@ -59,7 +61,7 @@ function ReadPost() {
         alert("O texto do post não pode ser nulo!");
       } else if (newPostText) {
         axios.put(
-          "http://localhost:3001/posts/postText",
+          `https://api-crud-node-js.herokuapp.com/posts/postText`,
           {
             newText: newPostText,
             id: id,

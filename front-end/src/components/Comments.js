@@ -14,7 +14,7 @@ function Comments() {
   const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
-    axios.get(`${config.apiUrl}/comments/${id}`).then((response) => {
+    axios.get(`https://api-crud-node-js.herokuapp.com/comments/${id}`).then((response) => {
       setComments(response.data);
     });
   }, [id]);
@@ -25,7 +25,7 @@ function Comments() {
     } else {
       axios
         .post(
-          `${config.apiUrl}/comments`,
+          `https://api-crud-node-js.herokuapp.com/comments`,
           {
             commentBody: newComment,
             PostId: id,
@@ -52,7 +52,7 @@ function Comments() {
   const deleteComment = (id, e) => {
     if (window.confirm("Tem certeza que deseja deletar esse comentário?")) {
       axios
-        .delete(`${config.apiUrl}/comments/${id}`, {
+        .delete(`https://api-crud-node-js.herokuapp.com/comments/${id}`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then(() => {

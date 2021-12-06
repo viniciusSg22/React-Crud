@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -11,7 +13,7 @@ function Login() {
   const login = (e) => {
     e.preventDefault();
     const data = { username: username, password: password };
-    axios.post("http://localhost:3001/auth/login", data).then((response) => {
+    axios.post(`https://api-crud-node-js.herokuapp.com/auth/login`, data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       } else {

@@ -3,6 +3,8 @@ import { ErrorMessage, Field, Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 
 function Register() {
   const initialValues = {
@@ -23,7 +25,7 @@ function Register() {
 
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then((response) => {
+    axios.post(`https://api-crud-node-js.herokuapp.com/auth`, data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       } else {

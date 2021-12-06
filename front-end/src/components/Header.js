@@ -28,7 +28,7 @@ function Header() {
 
   useEffect(() => {
     axios
-      .get(`${config.apiUrl}/auth/auth`, {
+      .get(`https://api-crud-node-js.herokuapp.com/auth/auth`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {
