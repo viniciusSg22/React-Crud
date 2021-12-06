@@ -1,7 +1,7 @@
 # Project Name
 [![Project Version][version-image]][version-url]
-[![Frontend][Frontend-image]][REACT]
-[![Backend][Backend-image]][NODE]
+[![Frontend][Frontend-image]][[Frontend-url]]
+[![Backend][Backend-image]][Backend-url]
 
 > Short blurb about your project idea.
 
