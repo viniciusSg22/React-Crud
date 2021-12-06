@@ -24,12 +24,6 @@ O projeto em questão faz uso de:
 * ![Nodemon][nodemon]
 * ![Sequelize][sequelize]
 
-## Utilização
-
-Imagens
-
----
-
 ## Instalação
 
 Instalação
@@ -65,10 +59,15 @@ npm run start
 ```
 
 ---
+## Utilização
+
+Imagens
+
+---
 ## Feito com
 
-* [![Npm][npm]][npm-url] - Gerenciador de Pacotes
-* [![Heroku][heroku]][heroku-url] - Deploy do cliente e do servidor
+[![Npm][npm]][npm-url] - Gerenciador de Pacotes
+[![Heroku][heroku]][heroku-url] - Deploy do cliente e do servidor
 
 ---
 ## Autores
