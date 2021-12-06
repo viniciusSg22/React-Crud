@@ -75,7 +75,7 @@ npm run start
 ---
 ## Feito com
 
-[![Gerenciador de Pacotes][npm]][npm-url] - Gerenciador de Pacotes
+[![Npm][npm]][npm-url] - Gerenciador de Pacotes
 [![Heroku][heroku]][heroku-url] - Deploy do cliente e do servidor
 
 ---
@@ -108,5 +108,5 @@ npm run start
 [mysql2]: https://img.shields.io/badge/Backend-MySQL2-important?style=for-the-badge
 [nodemon]: https://img.shields.io/badge/Backend-Nodemon-important?style=for-the-badge
 [sequelize]: https://img.shields.io/badge/Backend-Sequelize-important?style=for-the-badge
-[npm]: https://img.shields.io/badge/NPM-npm-important?style=for-the-badge
-[heroku]: https://img.shields.io/badge/Heroku-HerokuCLI-important?style=for-the-badge
+[npm]: https://img.shields.io/badge/Gerenciador%20de%20Pacotes-npm-important?style=for-the-badge
+[heroku]: https://img.shields.io/badge/Deploy-HerokuCLI-important?style=for-the-badge
