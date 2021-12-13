@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 import Comments from "../components/Comments";
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
 
 function ReadPost() {
   let { id } = useParams();

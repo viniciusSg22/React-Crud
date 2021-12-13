@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
 
 function Comments() {
   let { id } = useParams();
@@ -14,9 +12,11 @@ function Comments() {
   const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
-    axios.get(`https://api-crud-node-js.herokuapp.com/comments/${id}`).then((response) => {
-      setComments(response.data);
-    });
+    axios
+      .get(`https://api-crud-node-js.herokuapp.com/comments/${id}`)
+      .then((response) => {
+        setComments(response.data);
+      });
   }, [id]);
 
   const addComment = () => {
@@ -43,13 +43,12 @@ function Comments() {
             };
             setComments([...comments, commentToAdd]);
             setNewComment("");
-            window.location.reload(true);
           }
         });
     }
   };
 
-  const deleteComment = (id, e) => {
+  const deleteComment = (id) => {
     if (window.confirm("Tem certeza que deseja deletar esse comentário?")) {
       axios
         .delete(`https://api-crud-node-js.herokuapp.com/comments/${id}`, {
@@ -84,26 +83,26 @@ function Comments() {
       </div>
       <div>
         <h1>Comentários:</h1>
-        {comments.map((comment, key) => {
+        {comments.map((comment, id) => {
           return (
-            <div className="card col-sm-5">
-              <div key={key} className="card-body">
+            <div className="card col-sm-5" key={id}>
+              <div className="card-body d-flex justify-content-around align-items-center">
                 <blockquote className="blockquote mb-0">
                   <p>{comment.commentBody}</p>
                   <label className="blockquote-footer">
                     {comment.username}
                   </label>
-                  {comment.username === obj?.username && (
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => {
-                        deleteComment(comment.id);
-                      }}
-                    >
-                      X
-                    </button>
-                  )}
                 </blockquote>
+                {comment.username === obj?.username && (
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      deleteComment(comment.id);
+                    }}
+                  >
+                    X
+                  </button>
+                )}
               </div>
               <div></div>
             </div>

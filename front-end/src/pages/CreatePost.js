@@ -3,8 +3,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
 
 function CreatePost() {
   let navigate = useNavigate();
@@ -67,7 +65,7 @@ function CreatePost() {
             type="submit"
             className="w-25 btn btn-lg btn-primary col-sm-3"
           >
-            Criar Post
+            Criar
           </button>
         </Form>
       </Formik>

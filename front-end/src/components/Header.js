@@ -3,9 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { AuthContext } from "../helpers/AuthContext";
 import axios from "axios";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+import { Nav, Navbar } from "react-bootstrap";
 
 function Header() {
   const [authState, setAuthState] = useState({
@@ -100,7 +98,7 @@ function Header() {
                   >
                     Logout
                   </button>
-                  <h1>{authState.username}</h1>
+                  <h2>{authState.username}</h2>
                 </>
               )}
             </Nav>

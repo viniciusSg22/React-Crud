@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../components/Card";
 import { useNavigate } from "react-router-dom";
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
 
 function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
@@ -19,9 +17,11 @@ function Home() {
   });
 
   useEffect(() => {
-    axios.get(`https://api-crud-node-js.herokuapp.com/posts`).then((response) => {
-      setListOfPosts(response.data);
-    });
+    axios
+      .get(`https://api-crud-node-js.herokuapp.com/posts`)
+      .then((response) => {
+        setListOfPosts(response.data);
+      });
   }, [busca]);
 
   return (
@@ -41,15 +41,16 @@ function Home() {
       {filter.map((value, keyName) => {
         return (
           <div
-            onClick={() => {
-              navigate(`/readpost/${value.id}`);
-            }}
+            // onClick={() => {
+            //   navigate(`/readpost/${value.id}`);
+            // }}
             key={keyName}
           >
             <Card
               title={value.title}
               text={value.postText}
               footer={value.username}
+              onClick={() => navigate(`/readpost/${value.id}`)}
             />
           </div>
         );

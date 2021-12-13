@@ -3,8 +3,6 @@ import { ErrorMessage, Field, Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
 
 function Register() {
   const initialValues = {
@@ -25,14 +23,16 @@ function Register() {
 
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    axios.post(`https://api-crud-node-js.herokuapp.com/auth`, data).then((response) => {
-      if (response.data.error) {
-        alert(response.data.error);
-      } else {
-        navigate("/");
-        alert("Usuário criado com sucesso!");
-      }
-    });
+    axios
+      .post(`https://api-crud-node-js.herokuapp.com/auth`, data)
+      .then((response) => {
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          navigate("/");
+          alert(response.data);
+        }
+      });
   };
   return (
     <div>
@@ -65,7 +65,7 @@ function Register() {
           </div>
           <button
             type="submit"
-            className="w-25 btn btn-lg btn-primary col-sm-3"
+            className="w-30 btn btn-lg btn-primary col-sm-3"
           >
             Cadastrar
           </button>

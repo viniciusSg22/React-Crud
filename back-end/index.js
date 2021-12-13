@@ -9,7 +9,7 @@ const db = require("./models");
 
 //Rotas
 const postRouter = require('./routes/Posts');
-app.use("/posts", postRouter); //localhost:3001/posts irá exibir a mensagem "Hello World"
+app.use("/posts", postRouter); 
 const commentsRouter = require('./routes/Comments');
 app.use("/comments", commentsRouter); 
 const usersRouter = require('./routes/Users');

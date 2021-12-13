@@ -8,29 +8,19 @@ const { sign } = require("jsonwebtoken");
 router.post("/", async (req, res) => {
   const { username, password } = req.body;
 
+  const userObject = await Users.findOne({ where: { username } });
+
   bcrypt.hash(password, 10).then((hash) => {
     Users.create({
       username: username,
       password: hash,
     });
-    res.json("SUCCESS");
+    if (userObject?.dataValues.username === req.body.username) {
+      res.send("Usuário já existe");
+    } else {
+      res.json("Usuário criado com sucesso!");
+    }
   });
-
-  // const user = await Users.findOne({ where: { username: username } });
-
-  // bcrypt.compare(username, user.username).then((match) => {
-  //   if (!match) {
-  //     res.json({ error: "Nome de usuário inserido já existe" });
-  //     return
-  //   }
-  //   bcrypt.hash(password, 10).then((hash) => {
-  //     Users.create({
-  //       username: username,
-  //       password: hash,
-  //     });
-  //     res.json("Dados inseridos com sucesso");
-  //   });
-  // }); //ERRO = USERNAME NULL
 });
 
 router.post("/login", async (req, res) => {
